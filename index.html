@@ -16,12 +16,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <div class="header">
 
     <div class="topbar">
+
         <h1>My Todo</h1>
 
         <button class="settings-btn">
             <i class="fa-solid fa-gear"></i>
             <span>設定</span>
         </button>
+
     </div>
 
     <div class="user">
@@ -34,21 +36,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 </div>
 
-<div class="timeline">
-    <div class="add-todo">
-
-<input
-type="text"
-id="todoInput"
-placeholder="新しい目標を入力">
-
-<button onclick="addTodo()">
-追加
-</button>
-
-</div>
-
-<div id="todoList"></div>
+<div class="timeline" id="todoList">
 
     <div class="todo-card completed">
 
@@ -69,35 +57,46 @@ placeholder="新しい目標を入力">
 
     </div>
 
-    <div class="todo-card">
+</div>
 
-        <div class="number">2</div>
+<div class="budget-card" onclick="openBudget()">
 
-        <div class="content">
-
-            <h3>買い物</h3>
-
-            <p>日用品購入</p>
-
-            <div class="status">
-                未完了
-            </div>
-
-        </div>
-
+    <div class="budget-left">
+        <i class="fa-solid fa-yen-sign"></i>
     </div>
 
-    <div class="budget-card" onclick="openBudget()">
+    <div>
+        <h3>本日の予算</h3>
+    </div>
 
-        <div class="budget-left">
-            <i class="fa-solid fa-yen-sign"></i>
-        </div>
+    <i class="fa-solid fa-chevron-right"></i>
 
-        <div>
-            <h3>本日の予算</h3>
-        </div>
+</div>
 
-        <i class="fa-solid fa-chevron-right"></i>
+<!-- Todo作成画面 -->
+
+<div class="modal" id="todoModal">
+
+    <div class="modal-box">
+
+        <h2>目標作成</h2>
+
+        <input
+        id="todoTitle"
+        type="text"
+        placeholder="タイトル">
+
+        <textarea
+        id="todoDetail"
+        placeholder="内容"></textarea>
+
+        <button onclick="saveTodo()">
+            保存
+        </button>
+
+        <button onclick="closeModal()">
+            キャンセル
+        </button>
 
     </div>
 
@@ -115,8 +114,12 @@ placeholder="新しい目標を入力">
         <span>週間リスト</span>
     </button>
 
-    <button class="center-btn">
+    <button
+    class="center-btn"
+    onclick="openModal()">
+
         <i class="fa-solid fa-plus"></i>
+
     </button>
 
     <button>
