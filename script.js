@@ -1,8 +1,7 @@
 const today = new Date();
 
 document.getElementById("today").innerHTML =
-`${today.getFullYear()}年<br>
-${today.getMonth()+1}月${today.getDate()}日`;
+`${today.getFullYear()}年<br>${today.getMonth()+1}月${today.getDate()}日`;
 
 function openBudget(){
     alert("本日の予算ページは作成中です");
@@ -45,7 +44,10 @@ function saveTodo(){
     const detail =
     document.getElementById("todoDetail").value.trim();
 
-    if(title === "") return;
+    if(title === ""){
+        alert("タイトルを入力してください");
+        return;
+    }
 
     if(editIndex === -1){
 
@@ -57,17 +59,13 @@ function saveTodo(){
 
     }else{
 
-        todos[editIndex].title =
-        title;
+        todos[editIndex].title = title;
+        todos[editIndex].detail = detail;
 
-        todos[editIndex].detail =
-        detail;
     }
 
     saveData();
-
     renderTodos();
-
     closeModal();
 }
 
@@ -87,7 +85,9 @@ function editTodo(index){
 
 function deleteTodo(){
 
-    if(editIndex === -1) return;
+    if(editIndex < 0){
+        return;
+    }
 
     if(confirm("削除しますか？")){
 
@@ -103,7 +103,9 @@ function deleteTodo(){
 
 function toggleComplete(){
 
-    if(editIndex === -1) return;
+    if(editIndex < 0){
+        return;
+    }
 
     todos[editIndex].done =
     !todos[editIndex].done;
@@ -163,6 +165,14 @@ function renderTodos(){
 
         `;
     });
+
 }
+
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.saveTodo = saveTodo;
+window.editTodo = editTodo;
+window.deleteTodo = deleteTodo;
+window.toggleComplete = toggleComplete;
 
 renderTodos();
