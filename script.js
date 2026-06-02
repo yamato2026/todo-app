@@ -5,103 +5,85 @@ document.getElementById("today").innerHTML =
 ${today.getMonth()+1}月${today.getDate()}日`;
 
 function openBudget(){
-    alert("本日の予算ページは作成中です");
+
+alert(
+`本日の予算
+
+予算ページは作成中です`
+);
+
 }
 
-let todos =
-JSON.parse(localStorage.getItem("todos")) || [];
+function openModal(){
 
-function saveTodos(){
-    localStorage.setItem(
-        "todos",
-        JSON.stringify(todos)
-    );
+document.getElementById(
+"todoModal"
+).style.display="flex";
+
 }
 
-function renderTodos(){
+function closeModal(){
 
-    const list =
-    document.getElementById("todoList");
+document.getElementById(
+"todoModal"
+).style.display="none";
 
-    list.innerHTML = "";
-
-    todos.forEach((todo,index)=>{
-
-        list.innerHTML += `
-        <div class="todo-card">
-
-            <div class="number">
-                ${index+1}
-            </div>
-
-            <div class="content">
-
-                <h3>${todo.title}</h3>
-
-                ${
-                    todo.done
-                    ?
-                    `<div class="status complete">
-                        <i class="fa-solid fa-check"></i>
-                        目標を完了しました
-                    </div>`
-                    :
-                    `<div class="status">
-                        未完了
-                    </div>`
-                }
-
-                <br>
-
-                <button onclick="toggleTodo(${index})">
-                    完了切替
-                </button>
-
-                <button onclick="deleteTodo(${index})">
-                    削除
-                </button>
-
-            </div>
-
-        </div>
-        `;
-    });
-
-    saveTodos();
 }
 
-function addTodo(){
+function saveTodo(){
 
-    const input =
-    document.getElementById("todoInput");
+const title =
+document.getElementById(
+"todoTitle"
+).value;
 
-    if(input.value.trim()===""){
-        return;
-    }
+const detail =
+document.getElementById(
+"todoDetail"
+).value;
 
-    todos.push({
-        title:input.value,
-        done:false
-    });
+if(title==="") return;
 
-    input.value="";
+const list =
+document.getElementById(
+"todoList"
+);
 
-    renderTodos();
+const count =
+document.querySelectorAll(
+".todo-card"
+).length+1;
+
+list.innerHTML += `
+<div class="todo-card">
+
+<div class="number">
+${count}
+</div>
+
+<div class="content">
+
+<h3>${title}</h3>
+
+<p>${detail}</p>
+
+<div class="status">
+未完了
+</div>
+
+</div>
+
+</div>
+`;
+
+closeModal();
+
+document.getElementById(
+"todoTitle"
+).value="";
+
+document.getElementById(
+"todoDetail"
+).value="";
+
 }
-
-function toggleTodo(index){
-
-    todos[index].done =
-    !todos[index].done;
-
-    renderTodos();
-}
-
-function deleteTodo(index){
-
-    todos.splice(index,1);
-
-    renderTodos();
-}
-
-renderTodos();
