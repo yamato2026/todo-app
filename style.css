@@ -1,294 +1,50 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:sans-serif;
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:5000;
 }
 
-html,
-body{
-    width:100%;
-    overflow-x:hidden;
+.modal-box{
+background:white;
+width:90%;
+max-width:400px;
+padding:20px;
+border-radius:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-body{
-    background:linear-gradient(
-        180deg,
-        #d85761 0%,
-        #d23434 45%,
-        #db7f74 100%
-    );
-    min-height:100vh;
-    padding-bottom:100px;
-    color:white;
-    font-size:16px;
+.modal-box h2{
+color:#d23434;
+text-align:center;
 }
 
-/* ヘッダー */
-
-.header{
-    padding:20px;
+.modal-box input,
+.modal-box textarea{
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
 }
 
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.modal-box textarea{
+height:120px;
+resize:none;
 }
 
-.topbar h1{
-    font-size:32px;
-    font-weight:300;
-}
-
-.settings-btn{
-    background:none;
-    border:none;
-    color:white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    cursor:pointer;
-}
-
-.settings-btn i{
-    font-size:28px;
-    background:white;
-    color:#d33;
-    padding:12px;
-    border-radius:50%;
-    margin-bottom:5px;
-}
-
-.settings-btn span{
-    font-size:13px;
-}
-
-.user{
-    margin-top:30px;
-}
-
-.user h2{
-    font-size:28px;
-}
-
-.date{
-    text-align:center;
-    margin-top:30px;
-    font-size:28px;
-    font-weight:bold;
-}
-
-/* Todo */
-
-.timeline{
-    padding:15px;
-}
-
-.todo-card{
-    display:flex;
-    margin-bottom:20px;
-}
-
-.number{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:white;
-    color:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:18px;
-    flex-shrink:0;
-}
-
-.content{
-    background:rgba(255,255,255,.22);
-    backdrop-filter:blur(10px);
-    padding:18px;
-    margin-left:12px;
-    border-radius:20px;
-    width:calc(100% - 54px);
-}
-
-.content h3{
-    font-size:20px;
-    margin-bottom:8px;
-}
-
-.content p{
-    font-size:15px;
-}
-
-.status{
-    margin-top:20px;
-    text-align:center;
-    font-size:18px;
-}
-
-/* 完了表示 */
-
-.complete{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    color:white;
-    font-weight:bold;
-}
-
-.complete i{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    background:#28a745;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:16px;
-}
-
-/* 本日の予算 */
-
-.budget-card{
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(10px);
-    padding:18px;
-    border-radius:20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:25px;
-    cursor:pointer;
-}
-
-.budget-card h3{
-    font-size:20px;
-}
-
-.budget-left{
-    font-size:24px;
-}
-
-/* 下メニュー */
-
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:85px;
-    background:white;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    z-index:999;
-}
-
-.bottom-nav button{
-    background:none;
-    border:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    color:#d33;
-    cursor:pointer;
-}
-
-.bottom-nav i{
-    font-size:24px;
-    margin-bottom:5px;
-}
-
-.bottom-nav span{
-    font-size:12px;
-}
-
-.center-btn{
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    background:#d33 !important;
-    color:white !important;
-    font-size:26px;
-    margin-top:-25px;
-}
-
-/* スマホ最適化 */
-
-@media (max-width:480px){
-
-    .header{
-        padding:15px;
-    }
-
-    .topbar h1{
-        font-size:26px;
-    }
-
-    .user h2{
-        font-size:22px;
-    }
-
-    .date{
-        font-size:22px;
-    }
-
-    .content h3{
-        font-size:18px;
-    }
-
-    .content p{
-        font-size:14px;
-    }
-
-    .status{
-        font-size:16px;
-    }
-
-    .bottom-nav{
-        height:80px;
-    }
-
-    .bottom-nav span{
-        font-size:11px;
-    }
-
-    .center-btn{
-        width:60px;
-        height:60px;
-        font-size:24px;
-    }
-}
-.add-todo{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-}
-
-.add-todo input{
-    flex:1;
-    border:none;
-    border-radius:15px;
-    padding:12px;
-    font-size:16px;
-}
-
-.add-todo button{
-    border:none;
-    background:white;
-    color:#d23434;
-    border-radius:15px;
-    padding:12px 20px;
-    font-weight:bold;
-}
-
-.content button{
-    border:none;
-    padding:8px 12px;
-    border-radius:10px;
-    margin:3px;
-    cursor:pointer;
+.modal-box button{
+padding:12px;
+border:none;
+border-radius:10px;
+background:#d23434;
+color:white;
+font-size:16px;
 }
