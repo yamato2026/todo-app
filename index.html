@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Todo</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="topbar">
+        <h1>My Todo</h1>
+
+        <button class="settings-btn">
+            <i class="fa-solid fa-gear"></i>
+            <span>設定</span>
+        </button>
+    </div>
+
+    <div class="user">
+        <h2>角田 光希 さん</h2>
+    </div>
+
+    <div class="date">
+        <span id="today"></span>
+    </div>
+
+</div>
+
+<div class="timeline">
+
+    <div class="todo-card completed">
+
+        <div class="number">1</div>
+
+        <div class="content">
+
+            <h3>レポート提出</h3>
+
+            <p>情報コンテンツ制作論</p>
+
+            <div class="status complete">
+                <i class="fa-solid fa-check"></i>
+                目標を完了しました
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="todo-card">
+
+        <div class="number">2</div>
+
+        <div class="content">
+
+            <h3>買い物</h3>
+
+            <p>日用品購入</p>
+
+            <div class="status">
+                未完了
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="budget-card" onclick="openBudget()">
+
+        <div class="budget-left">
+            <i class="fa-solid fa-yen-sign"></i>
+        </div>
+
+        <div>
+            <h3>本日の予算</h3>
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+    </div>
+
+</div>
+
+<div class="bottom-nav">
+
+    <button>
+        <i class="fa-solid fa-house"></i>
+        <span>トップ</span>
+    </button>
+
+    <button>
+        <i class="fa-solid fa-calendar"></i>
+        <span>週間リスト</span>
+    </button>
+
+    <button class="center-btn">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <button>
+        <i class="fa-solid fa-wallet"></i>
+        <span>家計簿</span>
+    </button>
+
+    <button>
+        <i class="fa-regular fa-user"></i>
+        <span>マイページ</span>
+    </button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
