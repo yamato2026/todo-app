@@ -15,13 +15,23 @@ function closeModal(){
     document.getElementById("todoModal").style.display="none";
 }
 
-let todos = JSON.parse(localStorage.getItem("todos")) || [];
+let todos =
+JSON.parse(localStorage.getItem("todos")) || [];
 
 function saveTodos(){
     localStorage.setItem(
         "todos",
         JSON.stringify(todos)
     );
+}
+
+function toggleTodo(index){
+
+    todos[index].done =
+    !todos[index].done;
+
+    saveTodos();
+    renderTodos();
 }
 
 function renderTodos(){
@@ -34,6 +44,7 @@ function renderTodos(){
     todos.forEach((todo,index)=>{
 
         list.innerHTML += `
+
         <div class="todo-card">
 
             <div class="number">
@@ -46,13 +57,43 @@ function renderTodos(){
 
                 <p>${todo.detail}</p>
 
-                <div class="status">
-                    未完了
-                </div>
+                ${
+                    todo.done
+                    ?
+                    `
+                    <div class="status complete">
+                        <i class="fa-solid fa-check"></i>
+                        目標を完了しました
+                    </div>
+                    `
+                    :
+                    `
+                    <div class="status">
+                        未完了
+                    </div>
+                    `
+                }
+
+                <br>
+
+                <button
+                onclick="toggleTodo(${index})"
+                class="complete-btn">
+
+                ${
+                    todo.done
+                    ?
+                    "未完了に戻す"
+                    :
+                    "完了"
+                }
+
+                </button>
 
             </div>
 
         </div>
+
         `;
     });
 
@@ -72,7 +113,8 @@ function saveTodo(){
 
     todos.push({
         title:title,
-        detail:detail
+        detail:detail,
+        done:false
     });
 
     saveTodos();
