@@ -1,7 +1,8 @@
 const today = new Date();
 
 document.getElementById("today").innerHTML =
-`${today.getFullYear()}年<br>${today.getMonth()+1}月${today.getDate()}日`;
+`${today.getFullYear()}年<br>
+${today.getMonth()+1}月${today.getDate()}日`;
 
 function openBudget(){
     alert("本日の予算ページは作成中です");
@@ -23,30 +24,30 @@ function openModal(){
 
     editIndex = -1;
 
-    document.getElementById("todoTitle").value="";
-    document.getElementById("todoDetail").value="";
+    document.getElementById("todoTitle").value = "";
+    document.getElementById("todoDetail").value = "";
 
-    document.getElementById("todoModal").style.display="flex";
+    document.getElementById("todoModal").style.display =
+    "flex";
 }
 
 function closeModal(){
 
-    document.getElementById("todoModal").style.display="none";
+    document.getElementById("todoModal").style.display =
+    "none";
 }
 
 function saveTodo(){
 
     const title =
-    document.getElementById("todoTitle").value;
+    document.getElementById("todoTitle").value.trim();
 
     const detail =
-    document.getElementById("todoDetail").value;
+    document.getElementById("todoDetail").value.trim();
 
-    if(title.trim()===""){
-        return;
-    }
+    if(title === "") return;
 
-    if(editIndex===-1){
+    if(editIndex === -1){
 
         todos.push({
             title:title,
@@ -86,7 +87,7 @@ function editTodo(index){
 
 function deleteTodo(){
 
-    if(editIndex===-1) return;
+    if(editIndex === -1) return;
 
     if(confirm("削除しますか？")){
 
@@ -102,7 +103,7 @@ function deleteTodo(){
 
 function toggleComplete(){
 
-    if(editIndex===-1) return;
+    if(editIndex === -1) return;
 
     todos[editIndex].done =
     !todos[editIndex].done;
@@ -119,7 +120,7 @@ function renderTodos(){
     const list =
     document.getElementById("todoList");
 
-    list.innerHTML="";
+    list.innerHTML = "";
 
     todos.forEach((todo,index)=>{
 
@@ -130,30 +131,30 @@ function renderTodos(){
         onclick="editTodo(${index})">
 
             <div class="number">
-            ${index+1}
+                ${index + 1}
             </div>
 
             <div class="content">
 
                 <h3>${todo.title}</h3>
 
-                <p>${todo.detail}</p>
+                <p>${todo.detail || ""}</p>
 
                 ${
-                todo.done
-                ?
-                `
-                <div class="status complete">
-                    <i class="fa-solid fa-check"></i>
-                    目標を完了しました
-                </div>
-                `
-                :
-                `
-                <div class="status">
-                    未完了
-                </div>
-                `
+                    todo.done
+                    ?
+                    `
+                    <div class="status complete">
+                        <i class="fa-solid fa-check"></i>
+                        目標を完了しました
+                    </div>
+                    `
+                    :
+                    `
+                    <div class="status">
+                        未完了
+                    </div>
+                    `
                 }
 
             </div>
@@ -162,7 +163,6 @@ function renderTodos(){
 
         `;
     });
-
 }
 
 renderTodos();
