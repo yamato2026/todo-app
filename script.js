@@ -128,3 +128,15 @@ function saveTodo(){
 }
 
 renderTodos();
+.complete-btn{
+    width:100%;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    background:#28a745;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
