@@ -262,3 +262,33 @@ body{
         font-size:24px;
     }
 }
+.add-todo{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.add-todo input{
+    flex:1;
+    border:none;
+    border-radius:15px;
+    padding:12px;
+    font-size:16px;
+}
+
+.add-todo button{
+    border:none;
+    background:white;
+    color:#d23434;
+    border-radius:15px;
+    padding:12px 20px;
+    font-weight:bold;
+}
+
+.content button{
+    border:none;
+    padding:8px 12px;
+    border-radius:10px;
+    margin:3px;
+    cursor:pointer;
+}
