@@ -59,7 +59,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
     <div class="modal-box">
 
-        <h2>目標作成</h2>
+        <h2>目標作成・編集</h2>
 
         <input
         id="todoTitle"
@@ -70,19 +70,27 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         id="todoDetail"
         placeholder="内容"></textarea>
 
-        <button onclick="saveTodo()">
+        <button
+        type="button"
+        onclick="saveTodo()">
             保存
         </button>
 
-        <button onclick="toggleComplete()">
+        <button
+        type="button"
+        onclick="toggleComplete()">
             完了切替
         </button>
 
-        <button onclick="deleteTodo()">
+        <button
+        type="button"
+        onclick="deleteTodo()">
             削除
         </button>
 
-        <button onclick="closeModal()">
+        <button
+        type="button"
+        onclick="closeModal()">
             キャンセル
         </button>
 
