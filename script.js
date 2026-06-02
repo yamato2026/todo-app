@@ -5,13 +5,53 @@ document.getElementById("today").innerHTML =
 ${today.getMonth()+1}月${today.getDate()}日`;
 
 function openBudget(){
+alert("本日の予算ページは作成中です");
+}
 
-alert(
-`本日の予算
+let todos =
+JSON.parse(localStorage.getItem("todos")) || [];
 
-予算ページは作成中です`
+function saveStorage(){
+localStorage.setItem(
+"todos",
+JSON.stringify(todos)
 );
+}
 
+function renderTodos(){
+
+const list =
+document.getElementById("todoList");
+
+list.innerHTML="";
+
+todos.forEach((todo,index)=>{
+
+list.innerHTML += `
+<div class="todo-card">
+
+<div class="number">
+${index+1}
+</div>
+
+<div class="content">
+
+<h3>${todo.title}</h3>
+
+<p>${todo.detail}</p>
+
+<div class="status">
+未完了
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+saveStorage();
 }
 
 function openModal(){
@@ -42,41 +82,16 @@ document.getElementById(
 "todoDetail"
 ).value;
 
-if(title==="") return;
+if(title.trim()===""){
+return;
+}
 
-const list =
-document.getElementById(
-"todoList"
-);
+todos.push({
+title:title,
+detail:detail
+});
 
-const count =
-document.querySelectorAll(
-".todo-card"
-).length+1;
-
-list.innerHTML += `
-<div class="todo-card">
-
-<div class="number">
-${count}
-</div>
-
-<div class="content">
-
-<h3>${title}</h3>
-
-<p>${detail}</p>
-
-<div class="status">
-未完了
-</div>
-
-</div>
-
-</div>
-`;
-
-closeModal();
+renderTodos();
 
 document.getElementById(
 "todoTitle"
@@ -86,4 +101,8 @@ document.getElementById(
 "todoDetail"
 ).value="";
 
+closeModal();
+
 }
+
+renderTodos();
